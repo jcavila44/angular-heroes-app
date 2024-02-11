@@ -24,4 +24,11 @@ export class HeroesService {
             ));
     }
 
+
+    getSuggestions$(query: string): Observable<IHero[]> {
+        return this.http.get<IHero[]>(`${this.baseUrl}/heroes?q=${query}`);
+    }
+
+
+
 }
