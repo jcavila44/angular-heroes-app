@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError, of } from 'rxjs';
 import { IHero } from '../interfaces/hero.interface';
 import { environments } from '../../../environments/environments';
 
@@ -16,5 +16,12 @@ export class HeroesService {
         return this.http.get<IHero[]>(`${this.baseUrl}/heroes`);
     }
 
+    getHeroById$(id: string): Observable<IHero | undefined> {
+        return this.http
+            .get<IHero>(`${this.baseUrl}/heroes/${id}`) //Hacemos la petición get de la ulr
+            .pipe(catchError(                           //Lo pasamos por el pipe catchError en caso de un error en el consumo
+                (error) => of(undefined)                //Devolvemos un of() que es un observable
+            ));
+    }
 
 }
