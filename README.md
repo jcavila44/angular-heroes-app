@@ -1,6 +1,6 @@
-# angular-heroes-appRutas Hijas
+# angular-heroes-app
 
-Esta es una aplicación muy completa realizada junto al curso de Fernando Herrera de Angular: De cero a experto 👉 https://www.udemy.com/course/angular-fernando-herrera/
+Esta es una aplicación muy completa realizada junto al curso de Fernando Herrera de Angular: De cero a experto 👉 ```https://www.udemy.com/course/angular-fernando-herrera/```
 
 Temas utilizados:
 
@@ -28,3 +28,10 @@ Temas utilizados:
 - Can Activate
 - Can Match
 - Mantener la sesión del usuario
+
+
+## Dev
+1. Clonar proyecto
+2. Ejecutar ```npm install```
+2. Levantar backend ```npm run backend```
+2. Ejecutar la app ```ng serve```
