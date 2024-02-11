@@ -8,15 +8,6 @@
   ],
   "heroes": [
     {
-      "id": "dc-batman",
-      "superhero": "Batman",
-      "publisher": "DC Comics",
-      "alter_ego": "Bruce Wayne",
-      "first_appearance": "Detective Comics #27",
-      "characters": "Bruce Wayne",
-      "alt_img": "https://hips.hearstapps.com/hmg-prod/images/batman-1989-64085601a5abf.jpg"
-    },
-    {
       "id": "dc-superman",
       "superhero": "Superman",
       "publisher": "DC Comics",
@@ -167,15 +158,6 @@
       "alter_ego": "Norrin Radd",
       "first_appearance": "The Fantastic Four #48",
       "characters": "Norrin Radd"
-    },
-    {
-      "id": "5yfhFBI",
-      "superhero": "argemiro",
-      "publisher": "Marvel Comics",
-      "alter_ego": "ermitage",
-      "first_appearance": "231",
-      "characters": "gei",
-      "alt_img": "https://i.blogs.es/a4d075/naruto-por-que-naruto-tiene-marcas-en-la-cara-y-cual-es-su-origen-segun-masashi-kishimoto1/840_560.jpeg"
     }
   ]
 }

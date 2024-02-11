@@ -41,11 +41,14 @@
                 </form>
 
                 <div class="flex justify-content-between">
-                    <button *ngIf="getCurrentHero.id" mat-flat-button color="warn"> <mat-icon>delete</mat-icon>
-                        Borrar</button>
+                    <button (click)="onDeleteHero()" *ngIf="getCurrentHero.id" mat-flat-button color="warn">
+                        <mat-icon>delete</mat-icon>
+                        Borrar
+                    </button>
                     <span></span>
                     <button (click)="onSubmit()" mat-flat-button color="primary"> <mat-icon>save</mat-icon>
-                        Guardar</button>
+                        Guardar
+                    </button>
                 </div>
 
             </mat-card-content>
