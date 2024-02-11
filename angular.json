@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "test": {
+    "heroesapp": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -24,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/test",
+            "outputPath": "dist/heroesapp",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -82,10 +82,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "test:build:production"
+              "buildTarget": "heroesapp:build:production"
             },
             "development": {
-              "buildTarget": "test:build:development"
+              "buildTarget": "heroesapp:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -93,10 +93,10 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "test:build"
+            "buildTarget": "heroesapp:build"
           }
         },
-        "test": {
+        "heroesapp": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "polyfills": [

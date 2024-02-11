@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, of } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 import { IHero } from '../interfaces/hero.interface';
 import { environments } from '../../../environments/environments';
 
@@ -30,5 +30,22 @@ export class HeroesService {
     }
 
 
+    addHero$(hero: IHero): Observable<IHero> {
+        return this.http.post<IHero>(`${this.baseUrl}/heroes`, hero);
+    }
+
+    updateHero$(hero: IHero): Observable<IHero> {
+        if (!hero.id) throw new Error(`Hero id is required`);
+        return this.http.patch<IHero>(`${this.baseUrl}/heroes/${hero.id}`, hero);
+    }
+
+    deleteHeroById$(id: string): Observable<boolean> {
+        if (id) throw new Error(`Hero id is required`);
+        return this.http.delete(`${this.baseUrl}/heroes/${id}`)
+            .pipe(
+                catchError((error) => of(false)),
+                map((resp) => true)
+            );
+    }
 
 }
