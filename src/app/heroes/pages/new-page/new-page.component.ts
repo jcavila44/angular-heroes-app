@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { IHero, IPublisher } from '../../interfaces/hero.interface';
 import { HeroesService } from '../../services/heroes.service';
 import { switchMap } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -35,6 +36,7 @@ export class NewPageComponent implements OnInit {
         private heroesService: HeroesService,
         private activatedRoute: ActivatedRoute,
         private router: Router,
+        private snackbar: MatSnackBar,
     ) { }
 
     ngOnInit(): void {
@@ -61,24 +63,30 @@ export class NewPageComponent implements OnInit {
 
         if (this.heroForm.invalid) return;
         if (this.getCurrentHero.id) {
-            this.heroesService.updateHero$(this.getCurrentHero).subscribe(
-                (hero) => {
-
-                }
-            );
+            this.heroesService.updateHero$(this.getCurrentHero)
+                .subscribe((hero) => {
+                    this.showSnackBar(`${hero.superhero} updated!`);
+                });
             return;
         }
 
 
-        this.heroesService.addHero$(this.getCurrentHero).subscribe(
-            (hero) => {
-
-            }
-        );
+        this.heroesService.addHero$(this.getCurrentHero)
+            .subscribe((hero) => {
+                this.router.navigate(['/heroes/edit', hero.id]);
+                this.showSnackBar(`${hero.superhero} created!`);
+            });
 
 
     }
 
+
+    showSnackBar(message: string): void {
+        this.snackbar.open(message, 'done', {
+            duration: 2500
+        })
+
+    }
 
 
 }
