@@ -1,14 +1,8 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-layout-page',
-  standalone: true,
-  imports: [
-    CommonModule,
-  ],
-  template: `<p>layoutPage works!</p>`,
-  styleUrl: './layoutPage.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: './layout-page.component.html',
+  styles: ``
 })
 export class LayoutPageComponent { }
