@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environments } from '../../../environments/environments';
 import { IUser } from '../interfaces/user.interface';
-import { Observable, tap } from 'rxjs';
+import { Observable, catchError, map, of, tap } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+
     constructor(
         private _router: Router,
         private _httpClient: HttpClient
@@ -25,11 +26,11 @@ export class AuthService {
     }
 
     login(email: string, password: string): Observable<IUser> {
-        const id = 1;
-        return this._httpClient.get<IUser>(`${this._baseURL}/users/${id}`).pipe(
-            tap((user) => this._user = user),
-            tap((user) => localStorage.setItem('token', 'dadsa-dasdasd.dsad.ad.sa')),
-        )
+        return this._httpClient.get<IUser>(`${this._baseURL}/users/1`)
+            .pipe(
+                tap((user) => this._user = user),
+                tap((user) => localStorage.setItem('token', 'dadsa-dasdasd.dsad.ad.sa')),
+            )
     }
 
 
@@ -37,6 +38,19 @@ export class AuthService {
         this._user = undefined;
         localStorage.clear();
         this._router.navigate(['/auth/login'])
+    }
+
+    checkAuthentication$(): Observable<boolean> {
+        if (!localStorage.getItem('token')) return of(false);
+
+        const token = localStorage.getItem('token');
+
+        return this._httpClient.get<IUser>(`${this._baseURL}/users/1`)
+            .pipe(
+                tap((user) => this._user = user),
+                map(user => !!user),
+                catchError(err => of(false))
+            );
     }
 
 
