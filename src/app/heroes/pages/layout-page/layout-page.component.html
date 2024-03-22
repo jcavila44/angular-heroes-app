@@ -24,8 +24,8 @@
 
 
         <span class="spacer"></span>
-
-        <button routerLink="login" mat-button>Logout</button>
+        {{getUserName}}
+        <button routerLink="login" mat-button (click)="onLogout()">Logout</button>
 
     </mat-toolbar>
 
